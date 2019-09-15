@@ -61,4 +61,37 @@ extension Pitcher {
             print("Whoops, something went wrong!")
         }
     }
+    
+    func decrementPitchCount(result: Pitch) {
+        pitchCount -= 1
+        
+        print("isStrike: \(result.isStrike)\nlocation: \(result.location) \npitchCount: \(pitchCount)")
+    }
+    
+    func decrementLocationCount(result: Int) {
+        switch result {
+        case 1:
+            pitchCount_1! -= 1
+            print("pitchCount_1: \(pitchCount_1!)")
+        case 2:
+            pitchCount_2! -= 1
+        case 3:
+            pitchCount_3! -= 1
+        case 4:
+            pitchCount_4! -= 1
+        case 5:
+            pitchCount_5! -= 1
+        case 6:
+            pitchCount_6! -= 1
+        case 7:
+            pitchCount_7! -= 1
+        case 8:
+            pitchCount_8! -= 1
+        case 9:
+            pitchCount_9! -= 1
+        default:
+            print("Whoops, something went wrong!")
+        }
+    }
+    
 }

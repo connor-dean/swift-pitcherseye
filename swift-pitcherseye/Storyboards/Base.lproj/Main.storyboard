@@ -163,12 +163,21 @@
                                     <action selector="registerPitchWithSender:" destination="F66-f4-1Mc" eventType="touchUpInside" id="GSd-hQ-mL9"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eW7-Pc-mga">
+                                <rect key="frame" x="636" y="872" width="83" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="Undo"/>
+                                <connections>
+                                    <action selector="undoPitch:" destination="F66-f4-1Mc" eventType="touchUpInside" id="C3D-lA-VdQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="TMN-hl-tJj" firstAttribute="leading" secondItem="dM1-12-65Z" secondAttribute="trailing" id="5ih-9S-wAi"/>
                             <constraint firstItem="hXy-Ki-9Yr" firstAttribute="baseline" secondItem="XnC-Kc-6Tt" secondAttribute="firstBaseline" id="6ly-yV-md6"/>
                             <constraint firstItem="hXy-Ki-9Yr" firstAttribute="leading" secondItem="F4M-gx-NXs" secondAttribute="leading" constant="279" id="7Bk-kD-ngd"/>
+                            <constraint firstItem="eW7-Pc-mga" firstAttribute="trailing" secondItem="TMN-hl-tJj" secondAttribute="trailing" id="8IU-Pr-s76"/>
                             <constraint firstItem="5RF-f4-tTR" firstAttribute="leading" secondItem="F4M-gx-NXs" secondAttribute="leading" constant="81" id="8bv-XB-qsp"/>
                             <constraint firstItem="dM1-12-65Z" firstAttribute="top" secondItem="TMN-hl-tJj" secondAttribute="top" id="BpE-mj-Siw"/>
                             <constraint firstItem="XnC-Kc-6Tt" firstAttribute="trailing" secondItem="TMN-hl-tJj" secondAttribute="trailing" id="C3S-pt-n1p"/>
@@ -188,6 +197,7 @@
                             <constraint firstItem="5RF-f4-tTR" firstAttribute="top" secondItem="F4M-gx-NXs" secondAttribute="top" constant="84" id="bCJ-yu-ato"/>
                             <constraint firstItem="5RF-f4-tTR" firstAttribute="leading" secondItem="cqI-HV-0cC" secondAttribute="leading" id="bVN-d5-tfJ"/>
                             <constraint firstItem="dM1-12-65Z" firstAttribute="leading" secondItem="cqI-HV-0cC" secondAttribute="trailing" id="coM-4t-Nnm"/>
+                            <constraint firstItem="eW7-Pc-mga" firstAttribute="top" secondItem="arO-xP-RWe" secondAttribute="bottom" constant="8" id="e3m-fd-8iF"/>
                             <constraint firstItem="TMN-hl-tJj" firstAttribute="leading" secondItem="arO-xP-RWe" secondAttribute="leading" id="f8w-yU-DMw"/>
                             <constraint firstItem="XnC-Kc-6Tt" firstAttribute="leading" secondItem="TMN-hl-tJj" secondAttribute="leading" id="lfV-YY-NSu"/>
                             <constraint firstItem="hXy-Ki-9Yr" firstAttribute="top" secondItem="XnC-Kc-6Tt" secondAttribute="top" id="mii-sp-efq"/>
@@ -215,6 +225,7 @@
                         <outlet property="taggingButton_7" destination="osH-ya-V2q" id="NUC-zj-VUS"/>
                         <outlet property="taggingButton_8" destination="SAE-I7-Nw8" id="USb-KW-frE"/>
                         <outlet property="taggingButton_9" destination="arO-xP-RWe" id="mt1-8d-d8A"/>
+                        <outlet property="undoButton" destination="eW7-Pc-mga" id="Kqa-kz-eqp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b6t-Jf-iEi" userLabel="First Responder" sceneMemberID="firstResponder"/>

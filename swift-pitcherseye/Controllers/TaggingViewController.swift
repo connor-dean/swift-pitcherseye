@@ -11,7 +11,10 @@ import UIKit
 class TaggingViewController: UIViewController {
     
     // Temporary until rosters are integrated
-    var pitcher = Pitcher(firstName: "Connor", lastName: "Dean", pitchCount: 0)
+    private var pitcher = Pitcher(firstName: "Connor", lastName: "Dean", pitchCount: 0)
+    
+    private var location = 0
+    private var lastPitchLocation = 0
     
     // High
     @IBOutlet weak var taggingButton_1: UIButton!
@@ -28,6 +31,8 @@ class TaggingViewController: UIViewController {
     @IBOutlet weak var taggingButton_8: UIButton!
     @IBOutlet weak var taggingButton_9: UIButton!
     
+    @IBOutlet weak var undoButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -37,11 +42,22 @@ class TaggingViewController: UIViewController {
             return
         }
         
-        let location = button.tag
+        location = button.tag
         
         let pitch = Pitch(isStrike: true, location: location)
         
+        trackLastPitch(pitch: pitch)
         pitcher.incrementPitchCount(result: pitch)
         pitcher.incrementLocationCount(result: pitch.location)
+    }
+    
+    @IBAction func undoPitch(_ sender: Any) {
+        let pitch = Pitch(isStrike: true, location: location)
+        pitcher.decrementPitchCount(result: pitch)
+        pitcher.decrementLocationCount(result: lastPitchLocation)
+    }
+    
+    func trackLastPitch(pitch: Pitch) {
+        lastPitchLocation = pitch.location
     }
 }
