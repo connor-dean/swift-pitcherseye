@@ -8,10 +8,51 @@
 
 import UIKit
 
+struct PitchStack {
+    private var items: [Pitch] = []
+    
+    func peek() -> Pitch {
+        guard let latestPitch = items.first else { fatalError("This stack is empty.") }
+        return latestPitch
+    }
+    
+    mutating func pop() -> Pitch? {
+        return items.removeFirst()
+    }
+    
+    mutating func push(_ element: Pitch) {
+        items.insert(element, at: 0)
+    }
+    
+    func length() -> Int {
+        return items.count
+    }
+    
+    func locationCounts() -> Dictionary<Int, Int> {
+        var pitchLocations: [Int] = []
+        
+        for locations in items {
+            pitchLocations.append(locations.location)
+        }
+        
+        let mappedItems = pitchLocations.map { ($0, 1) }
+        
+        let counts = Dictionary(mappedItems, uniquingKeysWith: +)
+
+        print(counts.sorted(by: <))
+        
+        return counts
+    }
+}
+
 class TaggingViewController: UIViewController {
     
     // Temporary until rosters are integrated
-    var pitcher = Pitcher(firstName: "Connor", lastName: "Dean", pitchCount: 0)
+    private var pitcher = Pitcher(firstName: "Connor", lastName: "Dean", pitchCount: 0, pitchCountLocations: [0 : 0])
+    
+    private var pitchStack = PitchStack()
+    
+    private var location = 0
     
     // High
     @IBOutlet weak var taggingButton_1: UIButton!
@@ -28,6 +69,8 @@ class TaggingViewController: UIViewController {
     @IBOutlet weak var taggingButton_8: UIButton!
     @IBOutlet weak var taggingButton_9: UIButton!
     
+    @IBOutlet weak var undoButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -37,11 +80,20 @@ class TaggingViewController: UIViewController {
             return
         }
         
-        let location = button.tag
+        location = button.tag
         
         let pitch = Pitch(isStrike: true, location: location)
         
-        pitcher.incrementPitchCount(result: pitch)
-        pitcher.incrementLocationCount(result: pitch.location)
+        pitchStack.push(pitch)
+        pitchStack.locationCounts()
+    }
+    
+    @IBAction func undoPitch(_ sender: Any) {
+        if pitchStack.length() > 0 {
+            pitchStack.pop()
+        } else {
+            print("The stack is empty.")
+        }
+        dump(pitchStack)
     }
 }
