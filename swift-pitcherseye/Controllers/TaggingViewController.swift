@@ -113,24 +113,27 @@ class TaggingViewController: UIViewController {
         location = button.tag
         
         let pitch = Pitch(isStrike: true, location: location)
+        pitchStack.push(pitch)
         
         let locationCounts = pitchStack.locationCounts()
-        
         let locations = pitchStack.sortedLocationCount(location: locationCounts)
-        
-        pitchStack.push(pitch)
         updateCountLabels(locations: locations)
     }
     
     @IBAction func undoPitch(_ sender: Any) {
         if pitchStack.length() > 0 {
             pitchStack.pop()
+            
+            let locationCounts = pitchStack.locationCounts()
+            let locations = pitchStack.sortedLocationCount(location: locationCounts)
+            updateCountLabels(locations: locations)
         } else {
             print("The stack is empty.")
         }
     }
     
     func updateCountLabels(locations: [Int]) {
+        print(locations)
         pitchCountLabel.text = String(pitchStack.length())
         strikeCountLabel.text = String(pitchStack.length())
         upperLeftCountLabel.text = String(locations[0])
