@@ -12,24 +12,11 @@ class Pitcher {
     var firstName: String
     var lastName: String
     var pitchCount: Int = 0
-    var pitchCountLocations: [Int : Int] = [
-        1 : 0,
-        2 : 0,
-        3 : 0,
-        4 : 0,
-        5 : 0,
-        6 : 0,
-        7 : 0,
-        8 : 0,
-        9 : 0,
-    ]
     
-    
-    init(firstName: String, lastName: String, pitchCount: Int, pitchCountLocations: [Int: Int]) {
+    init(firstName: String, lastName: String, pitchCount: Int) {
         self.firstName = firstName
         self.lastName = lastName
         self.pitchCount = pitchCount
-        self.pitchCountLocations = pitchCountLocations
     }
 }
 

@@ -60,7 +60,7 @@ struct PitchStack {
 class TaggingViewController: UIViewController {
     
     // Temporary until rosters are integrated
-    private var pitcher = Pitcher(firstName: "Connor", lastName: "Dean", pitchCount: 0, pitchCountLocations: [0 : 0])
+    private var pitcher = Pitcher(firstName: "Connor", lastName: "Dean", pitchCount: 0)
     
     private var pitchStack = PitchStack()
     
