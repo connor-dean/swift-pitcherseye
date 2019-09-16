@@ -22,7 +22,4 @@ class HomeViewController: UIViewController {
         btnStatistics.clipsToBounds = true
         btnTagEvent.clipsToBounds = true
     }
-
-
 }
-
